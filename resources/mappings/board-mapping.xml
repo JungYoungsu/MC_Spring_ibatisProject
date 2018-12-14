@@ -6,7 +6,7 @@
 <sqlMap>
 	<typeAlias alias="board" type="com.multicampus.biz.board.BoardVO"></typeAlias>
 	
-	<insert id="insertBoard" parameterClass="board">
+	<insert id="insertBoard">
 		insert into board(seq, title, writer, content)
 		values((select nvl(max(seq), 0)+1 from board),
 		#title#,
@@ -14,17 +14,16 @@
 		#content#)
 	</insert>
 
-	<update id="updateBoard" parameterClass="board">
+	<update id="updateBoard">
 		update board
 		set title=#title#, content=#content# where seq=#seq#
 	</update>
 
-	<delete id="deleteBoard" parameterClass="board">
+	<delete id="deleteBoard">
 		delete board where seq=#seq#
 	</delete>
 
-	<select id="getBoard" parameterClass="board"
-							resultClass="board">
+	<select id="getBoard" resultClass="board">
 		select * from board where seq=#seq#
 	</select>
 
