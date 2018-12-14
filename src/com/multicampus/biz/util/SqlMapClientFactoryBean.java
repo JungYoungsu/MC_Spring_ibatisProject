@@ -10,7 +10,7 @@ public class SqlMapClientFactoryBean {
 	static {
 		try {
 			if (sqlMapClient == null) {
-				Reader reader = Resources.getResourceAsReader("sql-map-config.xml");
+				Reader reader = Resources.getResourceAsReader("ibatis-map-config.xml");
 				sqlMapClient = SqlMapClientBuilder.buildSqlMapClient(reader);
 			}
 		} catch (Exception e) {
