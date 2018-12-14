@@ -15,7 +15,7 @@ public class BoardServiceClient {
 		vo.setTitle("iBatis 예제");
 		vo.setWriter("채규태");
 		vo.setContent("iBatis 예제.....");		
-//		boardDAO.insertBoard(vo);
+		boardDAO.insertBoard(vo);
 		
 		List<BoardVO> boardList = boardDAO.getBoardList(vo);
 		for (BoardVO board : boardList) {
