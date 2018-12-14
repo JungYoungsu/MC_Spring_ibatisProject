@@ -4,7 +4,9 @@
 	"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap>
-	<insert id="insertBoard" parameterClass="com.multicampus.biz.board.BoardVO">
+	<typeAlias alias="board" type="com.multicampus.biz.board.BoardVO"></typeAlias>
+	
+	<insert id="insertBoard" parameterClass="board">
 		insert into board(seq, title, writer, content)
 		values((select nvl(max(seq), 0)+1 from board),
 		#title#,
@@ -12,21 +14,21 @@
 		#content#)
 	</insert>
 
-	<update id="updateBoard" parameterClass="com.multicampus.biz.board.BoardVO">
+	<update id="updateBoard" parameterClass="board">
 		update board
 		set title=#title#, content=#content# where seq=#seq#
 	</update>
 
-	<delete id="deleteBoard" parameterClass="com.multicampus.biz.board.BoardVO">
+	<delete id="deleteBoard" parameterClass="board">
 		delete board where seq=#seq#
 	</delete>
 
-	<select id="getBoard" parameterClass="com.multicampus.biz.board.BoardVO"
-							resultClass="com.multicampus.biz.board.BoardVO">
+	<select id="getBoard" parameterClass="board"
+							resultClass="board">
 		select * from board where seq=#seq#
 	</select>
 
-	<select id="getBoardList" resultClass="com.multicampus.biz.board.BoardVO">
+	<select id="getBoardList" resultClass="board">
 		select * from board
 		order by seq desc
 	</select>
